@@ -53,3 +53,127 @@ If you want to read this file in English, click [here](README_ENG.md).
 - `desafio2_dataset.xlsx` > Base de dados utilizada;
 - **Nota:** 100
 - **Certificação:** Análise de Dados com Excel e Power BI.
+
+## ✴️ Desafio 3: Gere planos de ação a partir de análises com SQL.
+![](desafio3_print1.png)
+### Contexto e Desafio:
+> Suponha que você seja um analista de dados em uma empresa Edtech. Sua empresa está focada em acelerar seu crescimento aumentando o número de usuários cadastrados. Portanto, você foi solicitado a analisar vários aspectos da aquisição de clientes para ver o status do crescimento de novos usuários em sua empresa. Você construirá um dashboard utilizando SQL em busca de definir os próximos passos. Deverá utilizar as informações para estabelecer a estratégia da empresa para o próximo ano.
+### Visualizações e Queries:
+1. Distribuição por Gênero:
+```
+with LeadsDetalhesMale as (
+    select
+        LEAD_ID as "ID",
+        AGE as "Idade",
+        GENDER as "Gênero",
+        CURRENT_EDUCATION as "Grau de Escolaridade",
+        LEAD_GEN_SOURCE as "Fonte“
+    from leads_basic_details
+    where GENDER = "MALE“
+),
+LeadsDetalhesFemale as (
+    select
+        LEAD_ID as "ID",
+        AGE as "Idade",
+        GENDER as "Gênero",
+        CURRENT_EDUCATION as "Grau de Escolaridade",
+        LEAD_GEN_SOURCE as "Fonte“
+    from leads_basic_details
+    where GENDER = "FEMALE“
+)
+select
+    count(ID),
+    replace(Gênero, "MALE", "Masculino")
+from LeadsDetalhesMale
+union
+select
+    count(ID),
+    replace(Gênero, "FEMALE", "Feminino")
+from LeadsDetalhesFemale
+group by Gênero
+```
+2. Leads por Escolaridade:
+```
+with LeadsDetalhes as (
+    select
+        LEAD_ID as "ID",
+        AGE as "Idade",
+        GENDER as "Gênero",
+        CURRENT_EDUCATION as "Escolaridade",
+        LEAD_GEN_SOURCE as "Fonte“
+    from leads_basic_details
+)
+select
+    count(ID),
+    Escolaridade
+from LeadsDetalhes
+group by Escolaridade
+order by count(ID)
+```
+3. Idade Média:
+```
+with LeadsDetalhes as (
+    select
+        LEAD_ID as "ID",
+        AGE as "Idade",
+        GENDER as "Gênero",
+        CURRENT_EDUCATION as "Escolaridade",
+        LEAD_GEN_SOURCE as "Fonte“
+    from leads_basic_details
+)
+select
+    ceiling(avg(Idade))
+from LeadsDetalhes
+```
+4. % Médio Assitido por Idioma:
+```
+with LeadsAssistido as (
+    Select
+         LANGUAGE as Idioma,
+        WATCHED_PERCENTAGE as Assistido
+    from leads_demo_watched_details
+    where WATCHED_PERCENTAGE > 0.5
+)
+select
+    Idioma,
+    avg(Assistido)
+from LeadsAssistido
+group by Idioma
+```
+5. Ligações Atendidas por Plataforma:
+```
+with LeadsDetalhes as (
+    select
+        LEAD_ID as "ID",
+        AGE as "Idade",
+        GENDER as "Gênero",
+        CURRENT_EDUCATION as "Escolaridade",
+        replace(LEAD_GEN_SOURCE, "_", " ") as "Fonte“
+    from leads_basic_details
+),
+LeadsInteracoes as (
+    select
+        LEAD_ID as "ID2",
+        CALL_DONE_DATE as "Data_Ligação",
+        CALL_STATUS as "Status“
+    from leads_interaction_details
+    where CALL_STATUS = "successful“
+),
+TabelaGlobal as (
+    select
+        *
+    from LeadsDetalhes
+    inner join LeadsInteracoes on LeadsDetalhes.ID = LeadsInteracoes.ID2
+)
+Select
+    count(ID2) as "Quantidade",
+    Fonte,
+    Data_Ligação
+from TabelaGlobal
+group by Fonte, Data_Ligação
+order by Data_Ligação
+```
+### Final:
+- `desafio3_presentation.pdf` > Apresentação com o dashboards e queries;
+- **Nota:** 100
+- **Certificação:** SQL para Análise de Dados.
