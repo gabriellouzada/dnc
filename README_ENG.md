@@ -9,29 +9,29 @@ Se você preferir ler este arquivo em português, clique [aqui](README_PT-BR.md)
 ### Context and Challenge:
 > In this challenge, you are to create a report for an e-commerce that wants to study its sales and, so, trace the best strategy to improve its results. You'll receive two databases: one with data of sales, and another one with information of the clients. With that, create two pages so that the analysts can visualize the metrics.
 ### Visual Requirements:
-+ Card com Quantidade de Vendas;
-+ Card com Valor de Vendas s/ Frete;
-+ Card com Valor de Vendas c/ Frete;
-+ Card com Quantidade de Clientes;
-+ Card com Renda Média dos Clientes;
-+ Gráfico de Linha com Quantidade de Vendas por Mês;
-+ Gráfico de Linha com Valor Total de Vendas por Mês;
-+ Gráfico de Barras com Quantidade de Vendas por Categoria;
-+ Gráfico de Barras com Valor Total de Vendas por Categoria;
-+ Gráfico de Barras com Distribuição de Idade dos Clientes;
-+ Gráfico de Barras com Distribuição de Renda dos Clientes;
-+ Segmentação de Dados por Bandeira;
-+ Segmentação de Dados por Estado;
-+ Segmentação de Dados por Canal de Venda;
-+ Segmentação de Dados por Departamento;
-+ Segmentação de Dados por Idade;
-+ Segmentação de Dados por Faixa de Renda;
-+ Segmentação de Dados por Estado de Nascimento.
++ Card with Quantity of Sales;
++ Card with Revenue w/o Shipping;
++ Card with Revenue w/ Shipping;
++ Card with Quantity of Clients;
++ Card with Average Income of the Clients;
++ Line Chart with Quantity of Sales per Month;
++ Line Chart with Total Revenue per Month;
++ Column Chart with Quantity of Sales per Category;
++ Column Chart with Total Sales Revenue per Category;
++ Column Chart with Client Age Distribution;
++ Column Chart with Client Income Distribution;
++ Slicer of Card Flag;
++ Slicer of State;
++ Slicer of Sales Channel;
++ Slicer of Department;
++ Slicer of Age;
++ Slicer of Income Distribution;
++ Slicer of Birth State.
 ### Final:
-- `desafio1_dashboard.pbix` > Dashboard final criado no desafio;
-- `desafio1_dataset.xlsx` > Base de dados utilizada;
-- **Nota:** 100
-- **Certificação:** Introdução a Modelo de Regressão Linear.
+- `desafio1_dashboard.pbix` > Final report created;
+- `desafio1_dataset.xlsx` > Dataset used;
+- **Grade:** 100
+- **Certification:** Introduction to the Linear Regression Model.
 
 ## ✴️ Desafio 2: Crie um painel gerencial automatizado utilizando Power BI.
 ![](desafio2_print1.jpg) ![](desafio2_print2.jpg)
